@@ -2,8 +2,9 @@ import React from 'react'
 
 const Input = () => {
   return (
-    <div>
-      <input type='text'></input>
+    <div className='task'>
+        <input className='checkbox'type ='checkbox'></input>
+        <input type='text' placeholder='Create a new todo...'></input>
     </div>
   )
 }
