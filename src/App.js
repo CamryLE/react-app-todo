@@ -1,12 +1,22 @@
 import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
+import Header from './components/Header'
+import Input from './components/input';
+import React from 'react'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
+<body>
+  <div className='container'>
+    <Header />
+    <Input />
+  </div>    
+</body>
   )
 }
+
+
+
 
 export default App;
