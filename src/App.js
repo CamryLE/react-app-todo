@@ -16,6 +16,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 
 const App = () => {
+  let [remaining, setRemaining] = useState('')
   const [tasks, setTasks] = useState ([
     {
       id: 1,
@@ -47,8 +48,6 @@ const App = () => {
     setTasks(tasks.filter((task)=> task.id !== id))
   }
   
-  
-  
   //On Submit
   const onSubmit = (e) => {
     console.log('deez')
@@ -58,14 +57,21 @@ const App = () => {
       return
     }
   } 
+
+  //Count Items Left
+  
+  
+   const length = tasks.length
+  
+
   console.log(tasks.length)
 return (
-<body>
+<body >
   <div className='container'>
     <Header onChange={() => console.log('deez')}/>
     <Input onAdd={onSubmit}></Input>
   {tasks.length > 0 ? <Tasks delTask={deleteTask} onCheck={crossTask} tasks={tasks}/>: <div className='alert'>Add a Task!</div>}
- <Footer />
+ <Footer itemsLeft={length}/>
     
   </div>    
 </body>

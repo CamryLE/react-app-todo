@@ -1,7 +1,9 @@
-const Itemnum = () => {
+
+
+const Itemnum = ({itemsLeft}) => {
   return (
     <div className="items">
-      5 items left
+      `{itemsLeft}  Tasks remaining`
     </div>
   )
 }
