@@ -1,9 +1,11 @@
-const States = () => {
+import { useState } from "react"
+
+const States = ({setActive, setAll, setCompleted}) => {
   return (
     <ul>
-        <li>All</li>
-        <li className="selected">Active</li>
-        <li>Completed</li>
+        <li onClick={setAll}>All</li>
+        <li onClick={setActive} className="">Active</li>
+        <li onClick={setCompleted}>Completed</li>
     </ul>
   )
 }

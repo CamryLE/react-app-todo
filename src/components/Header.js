@@ -5,8 +5,8 @@ const Header = ({title, icon, onChange}) => {
     
     return (
 
-    <header className='header'>
-        <h1 className='title'> {title} </h1>
+    <header id='header' className='header dark'>
+        <h1 className='title dark'> {title} </h1>
         <Button icon={icon} onClick={onChange}
         />
     

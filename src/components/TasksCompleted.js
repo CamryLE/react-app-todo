@@ -1,12 +1,11 @@
 import React from 'react'
 import Task from './Task'
 
-const Tasks = ({tasks, state, onToggle, onCheck, delTask}) => {
-
+const TasksCompleted = ({tasks, onToggle, onCheck, delTask}) => {
 
   return (
     <>
-      {tasks.map((task) => (
+      {tasks.filter(task => task.completed === true).map((task) => (
         <Task key={task.id} task={task} onToggle={onToggle} onCheck={onCheck} delTask={delTask}/>
       ))}
       
@@ -14,4 +13,4 @@ const Tasks = ({tasks, state, onToggle, onCheck, delTask}) => {
   )
 }
 
-export default Tasks
+export default TasksCompleted

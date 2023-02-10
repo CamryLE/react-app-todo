@@ -26,6 +26,12 @@ body {
   letter-spacing: .90rem;
 }
 
+
+.dark {
+  color: black;
+  
+}
+
 .btn {
   color: black;
   width: 40px;
@@ -35,6 +41,8 @@ body {
   border: none;
   /* border: none; */
 }
+
+
 
 .task {
   display: flex;
@@ -158,6 +166,11 @@ ul {
   gap: 15px;
 }
 
+li:hover {
+  color: aqua;
+  cursor: pointer;
+}
+
 ul .selected {
   color: aqua;
 }
@@ -176,6 +189,10 @@ ul .selected {
 .clear:hover {
   color: #fff;
   cursor: pointer;
+}
+
+.light {
+  color: red;
 }
 
 /* @keyframes App-logo-spin {

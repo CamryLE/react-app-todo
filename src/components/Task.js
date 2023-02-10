@@ -11,11 +11,8 @@ const Task = ({task, onCheck, delTask}) => {
 
   let [showDel, setDel] = useState(false);
 
-
-  
-
   return (
-    <div className={"task-added" }
+    <div className={"task-added dark" }
     onMouseEnter={() => setDel(true)}
     onMouseLeave={() => setDel(false)}
     >
