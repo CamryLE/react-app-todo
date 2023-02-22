@@ -67,7 +67,7 @@ const App = () => {
 
 // Drag and Drop
 const dragList = () => {
-  let items = document.getElementsByTagName("li"), current='none'
+  let items = document.getElementsByTagName("ol"), current='none'
     for (let i of items) {
     // (B1) ATTACH DRAGGABLE
     i.draggable = true;
@@ -113,8 +113,67 @@ dragList()
 
 
 
+// Change State
+let state
+const changeActive= () => {
+  state = 'active'
+  setStates()
+}
 
+const changeCompleted= () => {
+  state = 'completed'
+  setStates()
+}
+const changeAll= () => {
+  state = 'all'
+  setStates()
+}
 
+function setStates() {
+  const taskState = document.querySelectorAll('ol')
+  // console.log(state)
+  // console.log(taskState)
+  taskState.forEach(task => {
+    if (state === 'active') {
+      if (task.classList.contains('crossed')){
+        task.classList.add('hidden')
+      } else {
+        task.classList.remove('hidden')
+      }
+    } else if (state === 'all') {
+      if (task.classList.contains('hidden')) {
+        task.classList.remove('hidden')
+      } else {
+        task.classList.remove('hidden')
+      }
+    } else if (state === 'completed') {
+      if (!task.classList.contains('crossed')) {
+        task.classList.add('hidden')
+      } else {
+        task.classList.remove('hidden')
+      }
+    }
+  });
+}
+  // taskState.forEach(task => {
+  //   if (state === 'active') {
+  //     if (task.classList.contains('crossed')) {
+  //     task.classList.add('hidden')
+  //     }
+  //   }
+  // }
+    
+//     else if(state === 'all') {
+//         if (task.classList.contains('hidden')){ 
+//         task.classList.remove('hidden')
+//         } 
+//     else if (state === 'completed') {
+//         if (!task.classList.contains('crossed')) {
+//         task.classList.add('hidden')
+//         }
+//   }
+// }
+//}
 
 
 //Cross Task
@@ -137,20 +196,7 @@ dragList()
     
   }
 
-  //Change State
-
-  const changeActive= (data) => {
-    {
-      tasks.filter(task => task.name.length === 3) // filter array first
-        
-    }
-  }
-  const changeAll= () => {
-
-  }
-  const changeCompleted= () => {
-
-  }
+ 
 
 
 // Add Task
@@ -186,7 +232,7 @@ return (
       <div className='alert'>Add a Task!</div>}
     
     
-    <Footer itemsLeft={length} clear={clearTasks} changeActive={changeActive}
+    <Footer itemsLeft={length} clear={clearTasks} setActive={changeActive} setCompleted={changeCompleted} setAll={changeAll}
     />
         
       </div>    

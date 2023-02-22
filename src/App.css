@@ -376,7 +376,11 @@ li.active {
  
 }
 
+/*  Change State */
 
+.hidden {
+  display: none;
+}
 
 /* @keyframes App-logo-spin {
   from {
