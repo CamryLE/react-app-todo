@@ -7,6 +7,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.bodlight {
+  background-image: url('bg-desktop-light.jpg');
+  background-repeat: no-repeat;
+  background-size:contain;
+}
+
+.boddark {
+background-image: url('bg-desktop-dark.jpg');
+  background-repeat: no-repeat;
+  background-size:contain;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

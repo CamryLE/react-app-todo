@@ -2,17 +2,25 @@
 
 * {
   font-family: 'Josefin Sans', sans-serif;
+  
 }
+
+
+
 
 body {
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
-  background-color: hsl(235, 21%, 11%);
+  /* background-color: hsl(235, 21%, 11%); */
   align-items: center;
-  
 }
+
+body > {
+  color: aqua;
+}
+
 
 .container {
   width: 500px;
@@ -24,13 +32,22 @@ body {
   align-items: center;
   color: #fff;
   letter-spacing: .90rem;
+  cursor: pointer;
 }
 
 
 .dark {
-  color: black;
+  color: #fff;
   
 }
+
+.darks > .task .task-container .footer{
+  color: white;
+  /* background-color: hsl(237, 14%, 26%); */
+  
+}
+
+
 
 .btn {
   color: black;
@@ -39,9 +56,15 @@ body {
   background: none;
   cursor: pointer;
   border: none;
+  
   /* border: none; */
+  
 }
 
+.btn:active {
+  transition: all 1s ease-in-out;
+  transform: rotate(-45deg);
+}
 
 
 .task {
@@ -50,29 +73,67 @@ body {
 }
 
 
+
+.task-container {
+  max-height: 295px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  list-style: none;
+  padding: 0;
+}
+
+/* ::-webkit-scrollbar {
+  background: hsl(237, 16%, 50%);
+}
+::-webkit-scrollbar-button {
+  background: hsl(237, 16%, 50%);
+}
+::-webkit-scrollbar-track {
+  background: gray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
 .add-form {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 
 .plus {
-  width: 40px;
+  width: 45px;
   height: 40px;
+  border-radius: 50%;
+  text-align: center;
   margin-right: 20px;
   margin-left: 20px;
   background: none;
-  border-radius: 30px;
+  
   border: 2px solid black;
   background-color: #fff;
   color: black;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.todo-name {
+  width: 100%;
+  margin-left: 20px;
 }
 
 input {
   font-size: 18px;
+  width: 100%;
   background: none;
   border: none;
-  color: #fff;
+  color: black;
 }
 input:focus {
   outline: none;
@@ -81,12 +142,29 @@ input:focus {
 .checkbox {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
     margin-right: 20px;
     margin-left: 20px;
-    background: none;
-    border-radius: 30px;
-    border: 2px solid black;
-    background-color: #fff;
+   
+    border: none;
+    background-color: none;
+    
+}
+
+.checkbox svg {
+  width: 100%;
+  height: 100%t;
+}
+
+.checked {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-left: 20px;
+  
+  border: none;
+  background-color: none;
 }
 
 .task {
@@ -94,19 +172,45 @@ input:focus {
   align-items: center;
   width: 100%;
   height: 55px;
-  background-color: hsl(237, 14%, 26%);
+  /* background-color: hsl(237, 14%, 26%); */
   border-radius: 3px;
   margin-bottom: 30px
+}
+
+.a-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  
+   background-color: hsl(237, 14%, 26%); 
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
 }
 
 .task-added {
   display: flex;
   align-items: center;
   width: 100%;
+  
+  height: 55px;
+ 
+ 
+}
+
+.left {
+  display: flex;
+}
+
+.task-crossed {
+  display: flex;
+  align-items: center;
+  width: 100%;
   height: 55px;
   background-color: hsl(237, 14%, 26%);
   border-bottom: 1px solid #fff;
-  
+  text-decoration: line-through;
+  cursor: pointer;
 }
 
 .task-text-container {
@@ -116,11 +220,17 @@ input:focus {
   align-items: center;
   justify-content: space-between;
   margin-right: 20px;
+  
 }
 
-.crossed{
-  text-decoration: line-through;
+.task-added:hover {
   cursor: pointer;
+}
+
+.crossed {
+  text-decoration: line-through;
+  background-color: gray;
+  
 }
 
 .x {
@@ -128,19 +238,18 @@ input:focus {
   width: 20px;
   height: 20px;
   fill: rgb(151, 7, 7);
-  background-color:hsl(237, 14%, 26%);
+  background: none;
   border: none;
+  margin-right: 20px;
 }
 
 .alert {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:hsl(237, 14%, 26%);
   margin-bottom: 20px;
   padding: 20px;
   font-weight: 800;
-  color: #fff;
   letter-spacing: .2rem;
 
 }
@@ -148,19 +257,21 @@ input:focus {
 .footer {
   display: flex;
   align-items: center;
-  background-color: hsl(237, 14%, 26%);
+  /* background-color: hsl(237, 14%, 26%); */
+  border-top: 2px solid white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   justify-content: space-around;
   padding: 3px;
   font-size: 15px;
+
 }
 
 .items {
   
 }
 
-ul {
+.states {
   list-style: none;
   display: flex;
   gap: 15px;
@@ -191,9 +302,81 @@ ul .selected {
   cursor: pointer;
 }
 
-.light {
-  color: red;
+.task, .task-container, .footer, .alert {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
 }
+
+
+
+/* Darkmode Colors */
+
+
+
+.boddark  {
+  background-color:hsl(235, 21%, 11%);
+}
+.dark li, .task, .footer, .alert {
+  background-color: hsl(237, 14%, 26%);
+  color: #fff;
+}
+
+.dark .clear {
+  color: #fff;
+}
+
+
+.dark .footer, .task {
+  border-top: 1px solid white;
+  background-color: hsl(237, 14%, 26%);
+}
+
+.dark .a-task {
+  border-bottom: 1px solid white;
+}
+
+.dark .crossed {
+  background-color: gray;
+}
+
+/* Lightmode Colors */
+
+.bodlight  {
+  background-color: hsl(0, 0%, 98%);
+}
+
+.light div{
+  color: black;
+}
+
+
+
+.light li, .task, .footer {
+  background-color: hsl(0, 0%, 98%);
+}
+
+.light .crossed {
+  background-color: gray;
+}
+
+.light .alert {
+  background-color: #fff;
+}
+
+.light .footer, .a-task {
+  border-top: 1px solid hsl(235, 19%, 35%);
+}
+
+
+/* Drag Drop */
+
+li.hint {
+  
+}
+li.active {
+ 
+}
+
+
 
 /* @keyframes App-logo-spin {
   from {

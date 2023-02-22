@@ -1,12 +1,10 @@
 import Button from './Button'
 const Header = ({title, icon, onChange}) => {
 
-
-    
     return (
 
     <header id='header' className='header dark'>
-        <h1 className='title dark'> {title} </h1>
+        <h1 onClick={() => window.location.reload(false)} className='title dark'> {title} </h1>
         <Button icon={icon} onClick={onChange}
         />
     

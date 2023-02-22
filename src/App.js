@@ -9,6 +9,9 @@ import { useState } from 'react'
 import Tasks from './components/Tasks'
 import Footer from './components/Footer';
 import { useEffect } from 'react';
+import {DndProvider} from 'react-dnd'
+import {HTML5Backend} from 'react-dnd-html5-backend'
+
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -20,9 +23,11 @@ library.add(fas)
 const App = () => {
   
   const darks = document.querySelectorAll('.dark')
+  const lights = document.querySelectorAll('.light')
  
 
-  let theme = 'dark'
+ 
+
   let [remaining, setRemaining] = useState('')
   const [tasks, setTasks] = useState ([
     {
@@ -43,25 +48,88 @@ const App = () => {
   ])
   
   //Dark Mode
+  let dark = true
+  const [theme, setTheme] = useState('dark');
   const darkMode = () => {
-    console.log(darks)
+    if (theme === 'light') 
+    {
+      setTheme('dark');
+    } 
+    else{ 
+      setTheme('light');
+  }
+  }
+  useEffect(() => {
+    document.body.className = `bod${theme}`;
+    }, [theme]);
+
+
+
+// Drag and Drop
+const dragList = () => {
+  let items = document.getElementsByTagName("li"), current='none'
+    for (let i of items) {
+    // (B1) ATTACH DRAGGABLE
+    i.draggable = true;
     
-    document.getElementById('header').classList.add('dark')
-    document.body.classList.add('dark')
-    document.getElementById('header').classList.add('dark')
-    document.getElementById('header').classList.add('dark')
-    document.getElementById('header').classList.add('dark')
-    document.getElementById('')
+    i.ondragstart = e => {
+        current= i;
+        if (it != current) { it. classlist.add('hint'); }
+    }
+    i.ondragenter = e => {
+      if (i != current) { i.classList.add("active"); }
+    };
+    i.ondragleave = () => i.classList.remove("active");
+    i.ondragend = () => { for (let it of items) {
+      it.classList.remove("hint");
+      it.classList.remove("active");
+  }};
+
+  
+    // (B6) DRAG OVER - PREVENT THE DEFAULT "DROP", SO WE CAN DO OUR OWN
+    i.ondragover = e => e.preventDefault();
+
+      // (B7) ON DROP - DO SOMETHING
+      i.ondrop = e => {
+        e.preventDefault();
+        if (i != current) {
+          let currentpos = 0, droppedpos = 0;
+          for (let it=0; it<items.length; it++) {
+            if (current == items[it]) { currentpos = it; }
+            if (i == items[it]) { droppedpos = it; }
+          }
+          if (currentpos < droppedpos) {
+            i.parentNode.insertBefore(current, i.nextSibling);
+          } else {
+            i.parentNode.insertBefore(current, i);
+          }
+        }
+      };
+    
+  }
+  console.log(items)
+}
+dragList()
+
+
+
+
+
+
+
+//Cross Task
+  const crossTask = (id) => {
+    console.log(id)
+    setTasks(tasks.map((task)=> task.id === id ? {...task, completed: !task.completed} : task))
   }
 
+  //Clear Tasks
 
-  //Cross Task
-
-  const crossTask =  (task) => {
-    // console.log(task)
-     task.className ='crossed'
+  const clearTasks = () => {
+    console.log('clear')
+    setTasks(  [])
   }
-
+  
   //Delete task
   const deleteTask = (id) => {
     // console.log(id)
@@ -69,101 +137,61 @@ const App = () => {
     
   }
 
-  //Set active tasks
-  let state = 'active'
-  let activeState = [...tasks]
-  let completedState = [...tasks]
-  let allState = [...tasks]
+  //Change State
 
-  
-  const chooseState = () => {
-    if(state === 'all') {
-      return (
-        <Tasks delTask={deleteTask} onCheck={crossTask} tasks={tasks}/>
-      )
+  const changeActive= (data) => {
+    {
+      tasks.filter(task => task.name.length === 3) // filter array first
+        
     }
   }
-
-  const setAll = (e,) => {
-    let stateList = document.querySelectorAll('li.selected')
-    let i 
-    for (i = stateList.length - 1; i >= 0; i--){
-      stateList.item(i).className = "";
-    }
-    e.target.className='selected'
-    state = 'all'
+  const changeAll= () => {
 
   }
-  const setActive = (e,) => {
-    let stateList = document.querySelectorAll('li.selected')
-    let i 
-    for (i = stateList.length - 1; i >= 0; i--){
-      stateList.item(i).className = "";
-    }
-    e.target.className='selected'
-    let tasksActive = [...tasks]
-    setTasks(tasksActive.filter((task)=> task.completed !== true))
-    state = 'active'
-
-
+  const changeCompleted= () => {
 
   }
-  const setCompleted = (e,) => {
-    // console.log('deez')
-    let stateList = document.querySelectorAll('li.selected')
-    let i 
-    for (i = stateList.length - 1; i >= 0; i--){
-      stateList.item(i).className = "";
-    }
-    e.target.className='selected'
-    let tasksCompleted = [...tasks]
-    setTasks(tasksCompleted.filter((task)=> task.completed === true))
-    state = 'completed'
-  }
-  
-  // const showState = () => {
-    
-  //   return (
-  //     <Tasks delTask={deleteTask} onCheck={crossTask} tasks={tasks}/>
-  //   )
-  // }
-  // Add Task
+
+
+// Add Task
   const addTask = (task) => {
     const id = Math.floor(Math.random()*10000) + 1
     const newTask = {id, ...task}
     setTasks([...tasks, newTask])
   }
   
-
   //Count Items Left
-  
-  
    const length = tasks.length
-  
-
-  console.log(tasks.length)
+ 
 return (
-<body className='dark'>
-  <div className='container dark'>
-    <Header onChange={darkMode}/>
-    <Input onAdd={addTask}></Input>
-  {tasks.length > 0 ?
-  <Tasks delTask={deleteTask} onCheck={crossTask} 
-   tasks={tasks} 
-  // activeState={activeState} completedState={completedState} allState={allState} state={state}
-  />
-  : 
-//else
-  <div className='alert'>Add a Task!</div>}
- 
- 
- <Footer itemsLeft={length} 
- //setActive={setActive} setCompleted={setCompleted} setAll={setAll}
- />
-    
-  </div>    
-</body>
+  
+  <DndProvider  backend={HTML5Backend}>
+    <div className= {theme}>
+      <div className='container'>
+        <Header onChange={darkMode}/>
+        <Input onAdd={addTask}></Input>
+        
+      {tasks.length > 0 ?
 
+      <ul class='task-container' id='task-container'>
+      
+      <Tasks delTask={deleteTask} 
+      tasks={tasks} crossTask={crossTask} 
+      // activeState={activeState} completedState={completedState} allState={allState} state={state}
+      />
+    
+      </ul>
+      : 
+    //else
+      <div className='alert'>Add a Task!</div>}
+    
+    
+    <Footer itemsLeft={length} clear={clearTasks} changeActive={changeActive}
+    />
+        
+      </div>    
+    </div>
+  </DndProvider>
   )
 }
 

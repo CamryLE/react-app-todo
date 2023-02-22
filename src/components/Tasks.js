@@ -1,13 +1,13 @@
 import React from 'react'
 import Task from './Task'
 
-const Tasks = ({tasks, state, onToggle, onCheck, delTask}) => {
+const Tasks = ({tasks, state, onToggle, crossTask, delTask, handleOnDrag}) => {
 
 
   return (
     <>
       {tasks.map((task) => (
-        <Task key={task.id} task={task} onToggle={onToggle} onCheck={onCheck} delTask={delTask}/>
+        <Task key={task.id} task={task} onToggle={onToggle} handleOnDrag={handleOnDrag} delTask={delTask} crossTask={crossTask}/>
       ))}
       
     </>

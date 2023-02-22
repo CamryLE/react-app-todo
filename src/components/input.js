@@ -8,23 +8,24 @@ library.add(fas)
 
 const Input = ({onAdd}) => {
   const [text, setText]= useState('')
+ 
   const onSubmit = (e) => {
     e.preventDefault()
-
-    
     onAdd({text})
-    
+    setText('')
   }
 
     
-  console.log(text)
+ // console.log(text)
 
   return (
     <div className='task' >
       <form className='add-form' onSubmit={onSubmit} >
-        <input className='plus' value={<FontAwesomeIcon icon="fa-solid fa-plus" />} type='submit'></input>
+        <button className='plus' type='submit'>
+          +
+        </button>
         
-        <input required type='text' value={text} onChange={(e) => setText(e.target.value)} placeholder='Create a new todo...'></input>
+        <input required className='todo-name' type='text' maxLength={25} value={text} onChange={(e) => setText(e.target.value)} placeholder='Create a new todo...'></input>
       </form>
     </div>
    

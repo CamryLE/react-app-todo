@@ -7,7 +7,7 @@ const Button = ({state, onClick, icon}) => {
 
     console.log({icon})
     return (
-    <button  type='checkbox'  className='btn dark' onClick={onClick}>
+    <button  type='checkbox'  className='btn' onClick={onClick}>
           {icon}
     </button>
     )
