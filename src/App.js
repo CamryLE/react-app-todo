@@ -48,14 +48,16 @@ const App = () => {
   ])
   
   //Dark Mode
-  let dark = true
+  let dark 
   const [theme, setTheme] = useState('dark');
   const darkMode = () => {
     if (theme === 'light') 
     {
+      dark = true
       setTheme('dark');
     } 
     else{ 
+      dark = false
       setTheme('light');
   }
   }
@@ -211,10 +213,10 @@ function setStates() {
  
 return (
   
-  <DndProvider  backend={HTML5Backend}>
+  
     <div className= {theme}>
       <div className='container'>
-        <Header onChange={darkMode}/>
+        <Header onChange={darkMode} darkMode={dark}/>
         <Input onAdd={addTask}></Input>
         
       {tasks.length > 0 ?
@@ -237,7 +239,7 @@ return (
         
       </div>    
     </div>
-  </DndProvider>
+  
   )
 }
 

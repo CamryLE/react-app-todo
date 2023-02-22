@@ -72,7 +72,9 @@ body > {
   align-items: center;
 }
 
-
+ol {
+  padding: 0;
+}
 
 .task-container {
   max-height: 295px;
@@ -145,27 +147,25 @@ input:focus {
     border-radius: 50%;
     margin-right: 20px;
     margin-left: 20px;
-   
+    padding: 12px;
+    padding-right: 10px;
     border: none;
-    background-color: none;
-    
-}
-
-.checkbox svg {
-  width: 100%;
-  height: 100%t;
+    background-color: grey;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 
 .checked {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 20px;
-  margin-left: 20px;
-  
-  border: none;
-  background-color: none;
+  background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
+
+.checkmark {
+  fill: #fff;
+ }
+
+
+
 
 .task {
   display: flex;
@@ -232,6 +232,8 @@ input:focus {
   background-color: gray;
   
 }
+
+
 
 .x {
   cursor: pointer;
@@ -315,7 +317,7 @@ ul .selected {
 .boddark  {
   background-color:hsl(235, 21%, 11%);
 }
-.dark li, .task, .footer, .alert {
+.dark ol, .task, .footer, .alert {
   background-color: hsl(237, 14%, 26%);
   color: #fff;
 }
@@ -350,7 +352,7 @@ ul .selected {
 
 
 
-.light li, .task, .footer {
+.light ol, .task, .footer {
   background-color: hsl(0, 0%, 98%);
 }
 

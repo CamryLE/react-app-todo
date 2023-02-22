@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react'
-
+// import {check} from ''
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
@@ -40,9 +40,7 @@ const Task = ({task,  delTask, crossTask}) => {
     
       
         <button className={`checkbox ${task.completed ? 'checked' : ''}` }>
-          <svg xmlns="http://www.w3.org/2000/svg" width="" height="">
-            <path fill="none" stroke="red" stroke-width="2" d="M1 4.304L3.696 7l6-6"/>
-          </svg>
+         <svg className='checkmark' xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg> 
         </button>
           <div  className='task-text-container'>
             <div  className>
