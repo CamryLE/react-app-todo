@@ -209,7 +209,13 @@ function setStates() {
   }
   
   //Count Items Left
-   const length = tasks.length
+let lengths
+
+const global = () => {
+lengths = tasks.filter((task)=> task.completed === false).length
+dragList ()
+}
+document.addEventListener('DOMContentLoaded', global())
  
 return (
   
@@ -234,7 +240,7 @@ return (
       <div className='alert'>Add a Task!</div>}
     
     
-    <Footer itemsLeft={length} clear={clearTasks} setActive={changeActive} setCompleted={changeCompleted} setAll={changeAll}
+    <Footer itemsLeft={lengths} clear={clearTasks} setActive={changeActive} setCompleted={changeCompleted} setAll={changeAll}
     />
         
       </div>    
