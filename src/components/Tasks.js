@@ -1,7 +1,7 @@
 import React from 'react'
 import Task from './Task'
 
-const Tasks = ({tasks, state, onToggle, crossTask, delTask, handleOnDrag}) => {
+const Tasks = ({tasks, onToggle, crossTask, delTask, handleOnDrag}) => {
 
 
   return (

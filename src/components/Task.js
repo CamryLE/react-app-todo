@@ -1,13 +1,5 @@
 import React from 'react';
 import { useState } from 'react'
-// import {check} from ''
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-
-
-library.add(fas)
-
-
 
 const Task = ({task,  delTask, crossTask}) => {
 
@@ -19,13 +11,7 @@ const Task = ({task,  delTask, crossTask}) => {
  
 
   let [showDel, setDel] = useState(false);
-  const [checked, setChecked] = useState(false); 
-  const handleChange = () => { 
-          
-    setChecked(!checked); 
-      
-  }; 
-    
+  
  
   return (
     <ol

@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 const States = ({setActive, setAll, setCompleted}) => {
   return (
     <ul className="states">

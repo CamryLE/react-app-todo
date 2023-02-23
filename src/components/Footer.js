@@ -2,7 +2,7 @@ import Itemnum from './Itemnum'
 import States from './States'
 import Clear from './Clear'
 
-const Footer = ({itemsLeft, setActive, setAll, setCompleted, clear, changeActive, changeCompleted}) => {
+const Footer = ({itemsLeft, setActive, setAll, setCompleted, clear}) => {
   return (
     <div className='footer'>
       <Itemnum itemsLeft={itemsLeft}/>

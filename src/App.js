@@ -1,7 +1,4 @@
-// import logo from './logo.svg';
-// import { useState } from 'react'
 import style1 from './App.css';
-import style2 from './Dark.css'
 import Header from './components/Header'
 import Input from './components/input';
 import React from 'react'
@@ -9,9 +6,6 @@ import { useState } from 'react'
 import Tasks from './components/Tasks'
 import Footer from './components/Footer';
 import { useEffect } from 'react';
-import {DndProvider} from 'react-dnd'
-import {HTML5Backend} from 'react-dnd-html5-backend'
-
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -21,14 +15,7 @@ library.add(fas)
 
 
 const App = () => {
-  
-  const darks = document.querySelectorAll('.dark')
-  const lights = document.querySelectorAll('.light')
- 
 
- 
-
-  let [remaining, setRemaining] = useState('')
   const [tasks, setTasks] = useState ([
     {
       id: 1,
@@ -76,10 +63,10 @@ const dragList = () => {
     
     i.ondragstart = e => {
         current= i;
-        if (it != current) { it. classlist.add('hint'); }
+        if (it !== current) { it.classlist.add('hint'); }
     }
     i.ondragenter = e => {
-      if (i != current) { i.classList.add("active"); }
+      if (i !== current) { i.classList.add("active"); }
     };
     i.ondragleave = () => i.classList.remove("active");
     i.ondragend = () => { for (let it of items) {
@@ -94,11 +81,11 @@ const dragList = () => {
       // (B7) ON DROP - DO SOMETHING
       i.ondrop = e => {
         e.preventDefault();
-        if (i != current) {
+        if (i !== current) {
           let currentpos = 0, droppedpos = 0;
           for (let it=0; it<items.length; it++) {
-            if (current == items[it]) { currentpos = it; }
-            if (i == items[it]) { droppedpos = it; }
+            if (current === items[it]) { currentpos = it; }
+            if (i === items[it]) { droppedpos = it; }
           }
           if (currentpos < droppedpos) {
             i.parentNode.insertBefore(current, i.nextSibling);
@@ -109,7 +96,7 @@ const dragList = () => {
       };
     
   }
-  console.log(items)
+  
 }
 dragList()
 
@@ -187,8 +174,7 @@ function setStates() {
   //Clear Tasks
 
   const clearTasks = () => {
-    console.log('clear')
-    setTasks(  [])
+    setTasks([])
   }
   
   //Delete task
