@@ -1,5 +1,3 @@
-
-
 const Itemnum = ({itemsLeft}) => {
   return (
     <div className="items">

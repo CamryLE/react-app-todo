@@ -16,28 +16,28 @@ library.add(fas)
 
 const App = () => {
 
-  const [tasks, setTasks] = useState ([
-    {
-      id: 1,
-      text: 'Complete Javascript Course',
-      completed: true,
-    },
-    {
-      id: 2,
-      text: 'Hit the Griddy',
-      completed: false,
-    },
-    {
-      id: 3,
-      text: 'Ligma Balls',
-      completed: true,
-    },
-  ])
+const [tasks, setTasks] = useState ([
+  {
+    id: 1,
+    text: 'Complete Javascript Course',
+    completed: true,
+  },
+  {
+    id: 2,
+    text: 'Hit the Griddy',
+    completed: false,
+  },
+  {
+    id: 3,
+    text: 'Ligma Balls',
+    completed: true,
+  },
+])
   
-  //Dark Mode
-  let dark 
-  const [theme, setTheme] = useState('dark');
-  const darkMode = () => {
+//Dark Mode
+let dark 
+const [theme, setTheme] = useState('dark');
+const darkMode = () => {
     if (theme === 'light') 
     {
       dark = true
@@ -47,10 +47,10 @@ const App = () => {
       dark = false
       setTheme('light');
   }
-  }
-  useEffect(() => {
-    document.body.className = `bod${theme}`;
-    }, [theme]);
+}
+useEffect(() => {
+  document.body.className = `bod${theme}`;
+  }, [theme]);
 
 
 
@@ -120,8 +120,6 @@ const changeAll= () => {
 
 function setStates() {
   const taskState = document.querySelectorAll('ol')
-  // console.log(state)
-  // console.log(taskState)
   taskState.forEach(task => {
     if (state === 'active') {
       if (task.classList.contains('crossed')){
@@ -144,64 +142,44 @@ function setStates() {
     }
   });
 }
-  // taskState.forEach(task => {
-  //   if (state === 'active') {
-  //     if (task.classList.contains('crossed')) {
-  //     task.classList.add('hidden')
-  //     }
-  //   }
-  // }
-    
-//     else if(state === 'all') {
-//         if (task.classList.contains('hidden')){ 
-//         task.classList.remove('hidden')
-//         } 
-//     else if (state === 'completed') {
-//         if (!task.classList.contains('crossed')) {
-//         task.classList.add('hidden')
-//         }
-//   }
-// }
-//}
-
 
 //Cross Task
-  const crossTask = (id) => {
+const crossTask = (id) => {
     console.log(id)
     setTasks(tasks.map((task)=> task.id === id ? {...task, completed: !task.completed} : task))
-  }
+}
 
-  //Clear Tasks
-
+//Clear Tasks
   const clearTasks = () => {
     setTasks([])
   }
   
-  //Delete task
-  const deleteTask = (id) => {
+//Delete task
+const deleteTask = (id) => {
     // console.log(id)
     setTasks(tasks.filter((task)=> task.id !== id))
     
-  }
+}
 
  
 
 
 // Add Task
-  const addTask = (task) => {
-    const id = Math.floor(Math.random()*10000) + 1
-    const newTask = {id, ...task}
-    setTasks([...tasks, newTask])
-  }
+const addTask = (task) => {
+  const id = Math.floor(Math.random()*10000) + 1
+  const newTask = {id, ...task}
+  setTasks([...tasks, newTask])
+  dragList ()
+}
   
-  //Count Items Left
-let lengths
 
-const global = () => {
+let lengths
+const onLoad = () => {
+//Count Items Left
 lengths = tasks.filter((task)=> task.completed === false).length
 dragList ()
 }
-document.addEventListener('DOMContentLoaded', global())
+document.addEventListener('DOMContentLoaded', onLoad())
  
 return (
   
