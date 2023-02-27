@@ -21,6 +21,10 @@ body > {
   color: aqua;
 }
 
+.app {
+  display: flex;
+  justify-content: center;
+}
 
 .container {
   width: 500px;
@@ -70,6 +74,7 @@ body > {
 .task {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 ol {
@@ -265,8 +270,7 @@ input:focus {
   border-bottom-right-radius: 5px;
   justify-content: space-around;
   padding: 3px;
-  font-size: 15px;
-
+ 
 }
 
 .items {
@@ -277,6 +281,7 @@ input:focus {
   list-style: none;
   display: flex;
   gap: 15px;
+  padding: 0;
 }
 
 li:hover {
@@ -326,6 +331,9 @@ ul .selected {
   color: #fff;
 }
 
+.dark .title {
+  color: #fff;
+}
 
 .dark .footer, .task {
   border-top: 1px solid white;
@@ -346,7 +354,11 @@ ul .selected {
   background-color: hsl(0, 0%, 98%);
 }
 
-.light div{
+.light .title {
+  color: black;
+}
+
+.light div {
   color: black;
 }
 
@@ -369,6 +381,7 @@ ul .selected {
 }
 
 
+
 /* Drag Drop */
 
 li.hint {
@@ -383,6 +396,119 @@ li.active {
 .hidden {
   display: none;
 }
+
+/* Mobile Styling */
+
+#root {
+  width: 100%;
+}
+
+
+@media(max-width: 768px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+
+
+  .mobilebox {
+    width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+  .container {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .header {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+
+  .task-container {
+    width: 100%;
+    
+    margin: 0;
+   
+  }
+
+  .x {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    fill: rgb(151, 7, 7);
+    background: none;
+    border: none;
+    margin-right: 20px;
+  }
+
+  .plus {
+    border: none;
+  }
+
+  
+  .alert {
+    background: none;
+    box-shadow: none;
+  }
+
+  .items {
+    padding-top: 15px;
+    
+  }
+
+  .states {
+    
+  }
+
+  .clear {
+   
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
+    font-size: 1.2rem;
+  }
+
+  .light .title {
+    color: white;
+  }
+  /* .app .title {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+  }
+
+  .app .btn {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+  } */
+}
+
+
 
 /* @keyframes App-logo-spin {
   from {
@@ -418,3 +544,4 @@ li.active {
 - Dark Grayish Blue: hsl(234, 11%, 52%)
 - Very Dark Grayish Blue: hsl(233, 14%, 35%)
 - Very Dark Grayish Blue: hsl(237, 14%, 26%) */
+

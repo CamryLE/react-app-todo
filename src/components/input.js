@@ -1,12 +1,14 @@
 import { useState } from 'react'
 
-const Input = ({onAdd}) => {
+
+const Input = ({onAdd, lengths}) => {
   const [text, setText]= useState('')
  
   const onSubmit = (e) => {
     e.preventDefault()
     onAdd({text})
     setText('')
+       
   }
 
     

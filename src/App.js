@@ -161,22 +161,27 @@ const deleteTask = (id) => {
     
 }
 
- 
+let lengths
 
+const lengthFind = () => {
+  lengths = tasks.filter((task)=> task.completed === false).length
+}
+lengthFind ()
 
 // Add Task
 const addTask = (task) => {
   const id = Math.floor(Math.random()*10000) + 1
   const newTask = {id, ...task}
   setTasks([...tasks, newTask])
-  dragList ()
+  lengths = tasks.filter((task)=> task.completed === false).length
 }
   
 
-let lengths
+
+
 const onLoad = () => {
 //Count Items Left
-lengths = tasks.filter((task)=> task.completed === false).length
+lengthFind ()
 dragList ()
 }
 document.addEventListener('DOMContentLoaded', onLoad())
@@ -184,10 +189,12 @@ document.addEventListener('DOMContentLoaded', onLoad())
 return (
   
   
-    <div className= {theme}>
+    <div className=  {`app ${theme}`}>
+    
       <div className='container'>
         <Header onChange={darkMode} darkMode={dark}/>
-        <Input onAdd={addTask}></Input>
+        <div className='mobilebox'>
+        <Input onAdd={addTask} lengthFind={lengthFind}></Input>
         
       {tasks.length > 0 ?
 
@@ -202,7 +209,7 @@ return (
       : 
     //else
       <div className='alert'>Add a Task!</div>}
-    
+    </div>
     
     <Footer itemsLeft={lengths} clear={clearTasks} setActive={changeActive} setCompleted={changeCompleted} setAll={changeAll}
     />
